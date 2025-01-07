@@ -81,42 +81,6 @@ estimate= model.estimate_effect(
 
 print(f'Estimate of causal effect: {estimate}')
 
-"""Estimate of causal effect: *** Causal Estimate ***
-
-## Identified estimand
-Estimand type: EstimandType.NONPARAMETRIC_ATE
-
-### Estimand : 1
-Estimand name: backdoor
-Estimand expression:
-   d                         
-───────(E[days_to_first_fix])
-d[ndev]                      
-Estimand assumption 1, Unconfoundedness: If U→{ndev} and U→days_to_first_fix then P(days_to_first_fix|ndev,,U) = P(days_to_first_fix|ndev,)
-
-## Realized estimand
-b: days_to_first_fix~ndev+ndev*rexp+ndev*sexp+ndev*exp
-Target units:
-
-## Estimate
-Mean value: 0.19472119907502616
-p-value: [0.087]
-95.0% confidence interval: (0.048893320180297906, 0.3068358115753469)
-### Conditional Estimates
-__categorical__rexp          __categorical__sexp  __categorical__exp
-(-594.8629999999999, 1.044]  (-0.001, 15.0]       (-0.001, 30.0]        0.142357
-                                                  (30.0, 143.5]         0.169673
-                                                  (143.5, 407.0]        0.224801
-                                                  (407.0, 981.0]        0.382365
-                                                  (981.0, 4976.0]       0.722570
-                                                                          ...   
-(14.593, 10801.0]            (236.0, 598.0]       (143.5, 407.0]        0.008121
-                                                  (407.0, 981.0]        0.071514
-                                                  (981.0, 4976.0]       0.845398
-                             (598.0, 2175.0]      (407.0, 981.0]        0.010460
-                                                  (981.0, 4976.0]       0.237382
-Length: 96, dtype: float64
-"""
 
 estimate.interpret()
 
