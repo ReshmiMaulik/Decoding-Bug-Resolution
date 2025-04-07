@@ -25,7 +25,7 @@ print(df.shape)
 
 print(df.columns)
 
-df = df[['ns','nf','ndev','exp','rexp','sexp','nuc','days_to_first_fix','entrophy']]
+df = df[['ns','nf','ndev','exp','rexp','sexp','nuc','days_to_first_fix','entropy']]
 
 print(df.shape)
 df.head()
