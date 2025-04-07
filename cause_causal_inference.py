@@ -18,13 +18,15 @@ import pandas as pd
 #url="https://raw.githubusercontent.com/sunnysong14/ContinualPerformanceValidityTSE2022/main/data/vscode.csv"
 #url="https://raw.githubusercontent.com/sunnysong14/ContinualPerformanceValidityTSE2022/main/data/tensorflow.csv"
 
+# Data files are uploaded
 from google.colab import files
 uploaded = files.upload()
 
-
-#df = pd.read_csv(url, sep=",")
+# Read Data file
 df = pd.read_csv('vscode.csv')
 #df = pd.read_csv('tensorflow.csv')
+#df = pd.read_csv(url, sep=",")
+
 
 print(df.shape)
 
@@ -35,6 +37,7 @@ df = df[['ns','nf','ndev','exp','rexp','sexp','nuc','days_to_first_fix','entropy
 print(df.shape)
 df.head()
 
+# To see the correlation among the data variables
 import matplotlib.pyplot as plt
 import seaborn as sns
 # plot heatmap for feature variables
@@ -74,8 +77,8 @@ ndev->ns;
 nf-> days_to_first_fix;
 ndev->days_to_first_fix;
 exp->days_to_first_fix;
-entrophy->ns;
-entrophy->nf;
+entropy->ns;
+entropy->nf;
 
 }
 
