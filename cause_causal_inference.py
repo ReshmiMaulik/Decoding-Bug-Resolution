@@ -127,7 +127,7 @@ gcm.fit(causal_model, df)
 
 #Once fitted, we can also obtain more insights into the model performances:
 
-print(gcm.evaluate_causal_model(causal_model, df1))
+print(gcm.evaluate_causal_model(causal_model, df))
 
 
 """Identification-The identification step involves defining what to measure by analyzing the causal graph. However, the actual evaluation of identification utilizes the available data and is performed during the estimation step.
