@@ -65,7 +65,7 @@ import graphviz
 !apt install libgraphviz-dev
 !pip install pygraphviz
 
-#--new graph----CauSE code
+#--new graph----DAG code
 causal_graph = """strict digraph  {
 
 sexp->ns;
@@ -100,6 +100,35 @@ model=CausalModel(
         )
 model.view_model(layout="dot")
 model.view_model(file_name="causal_model.png") # Save the plot to a file
+
+
+# To contruct the SCM
+
+#Model
+import networkx as nx
+causal_graph = nx.DiGraph([('sexp', 'ns'), ('ns', 'nf'), ('sexp', 'exp'),('rexp','exp'), ( 'exp','days_to_first_fix'), ('nf', 'days_to_first_fix'),('ndev', 'ns'),('exp', 'days_to_first_fix'),('entropy', 'ns'), ('entropy','nf')])
+
+from dowhy import CausalModel, gcm
+causal_model = gcm.StructuralCausalModel(causal_graph)
+
+# Set causal mechanisms for each node
+causal_model.set_causal_mechanism('sexp', gcm.EmpiricalDistribution())
+causal_model.set_causal_mechanism('ns', gcm.AdditiveNoiseModel(gcm.ml.create_linear_regressor()))
+causal_model.set_causal_mechanism('nf', gcm.AdditiveNoiseModel(gcm.ml.create_linear_regressor()))
+causal_model.set_causal_mechanism('exp', gcm.AdditiveNoiseModel(gcm.ml.create_linear_regressor()))
+causal_model.set_causal_mechanism('rexp', gcm.EmpiricalDistribution())
+causal_model.set_causal_mechanism('days_to_first_fix', gcm.AdditiveNoiseModel(gcm.ml.create_linear_regressor()))
+causal_model.set_causal_mechanism('ndev', gcm.EmpiricalDistribution())
+
+causal_model.set_causal_mechanism('entrophy', gcm.EmpiricalDistribution())
+
+# Now fit the model , Fitting the SCM to the data
+gcm.fit(causal_model, df)
+
+#Once fitted, we can also obtain more insights into the model performances:
+
+print(gcm.evaluate_causal_model(causal_model, df1))
+
 
 """Identification-The identification step involves defining what to measure by analyzing the causal graph. However, the actual evaluation of identification utilizes the available data and is performed during the estimation step.
 
