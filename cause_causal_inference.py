@@ -106,10 +106,10 @@ model.view_model(file_name="causal_model.png") # Save the plot to a file
 
 #Model
 import networkx as nx
-causal_graph = nx.DiGraph([('sexp', 'ns'), ('ns', 'nf'), ('sexp', 'exp'),('rexp','exp'), ( 'exp','days_to_first_fix'), ('nf', 'days_to_first_fix'),('ndev', 'ns'),('exp', 'days_to_first_fix'),('entropy', 'ns'), ('entropy','nf')])
+causal_graph1 = nx.DiGraph([('sexp', 'ns'), ('ns', 'nf'), ('sexp', 'exp'),('rexp','exp'), ( 'exp','days_to_first_fix'), ('nf', 'days_to_first_fix'),('ndev', 'ns'),('exp', 'days_to_first_fix'),('entropy', 'ns'), ('entropy','nf')])
 
 from dowhy import CausalModel, gcm
-causal_model = gcm.StructuralCausalModel(causal_graph)
+causal_model = gcm.StructuralCausalModel(causal_graph1)
 
 # Set causal mechanisms for each node
 causal_model.set_causal_mechanism('sexp', gcm.EmpiricalDistribution())
@@ -120,7 +120,7 @@ causal_model.set_causal_mechanism('rexp', gcm.EmpiricalDistribution())
 causal_model.set_causal_mechanism('days_to_first_fix', gcm.AdditiveNoiseModel(gcm.ml.create_linear_regressor()))
 causal_model.set_causal_mechanism('ndev', gcm.EmpiricalDistribution())
 
-causal_model.set_causal_mechanism('entrophy', gcm.EmpiricalDistribution())
+causal_model.set_causal_mechanism('entropy', gcm.EmpiricalDistribution())
 
 # Now fit the model , Fitting the SCM to the data
 gcm.fit(causal_model, df)
