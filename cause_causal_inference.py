@@ -15,11 +15,16 @@ import pandas as pd
 
 # Import data from Github
 
-url="https://raw.githubusercontent.com/sunnysong14/ContinualPerformanceValidityTSE2022/main/data/vscode.csv"
+#url="https://raw.githubusercontent.com/sunnysong14/ContinualPerformanceValidityTSE2022/main/data/vscode.csv"
 #url="https://raw.githubusercontent.com/sunnysong14/ContinualPerformanceValidityTSE2022/main/data/tensorflow.csv"
 
+from google.colab import files
+uploaded = files.upload()
 
-df = pd.read_csv(url, sep=",")
+
+#df = pd.read_csv(url, sep=",")
+df = pd.read_csv('vscode.csv')
+#df = pd.read_csv('tensorflow.csv')
 
 print(df.shape)
 
