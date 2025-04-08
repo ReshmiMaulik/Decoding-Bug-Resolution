@@ -124,7 +124,7 @@ causal_model.set_causal_mechanism('entropy', gcm.EmpiricalDistribution())
 
 # Now fit the model , Fitting the SCM to the data
 gcm.fit(causal_model, df)
-
+#Fitting means, we learn the generative models of the variables in the SCM according to the data.
 #Once fitted, we can also obtain more insights into the model performances:
 
 print(gcm.evaluate_causal_model(causal_model, df))
