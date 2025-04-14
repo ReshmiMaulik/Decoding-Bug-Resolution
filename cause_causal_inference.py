@@ -2,9 +2,9 @@
 """CauSE-Causal Inference.ipynb
 """
 
-!pip install 'scipy==1.10.1'
-!pip install 'scikit-learn==1.2.2'
-!pip install --force-reinstall econml
+#!pip install 'scipy==1.10.1'
+#!pip install 'scikit-learn==1.2.2'
+#!pip install --force-reinstall econml
 
 !pip install git+https://github.com/microsoft/dowhy.git
 import dowhy
