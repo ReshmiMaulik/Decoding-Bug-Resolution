@@ -36,7 +36,10 @@ data_df= df[[
 'sexp',
 'contains_bug',
 'days_to_first_fix',
-'exp']]
+'exp',
+'entrophy']]
+
+df.rename(columns={'entrophy': 'entropy'}, inplace=True)
 
 #--new graph----Final code
 causal_graph = """strict digraph  {
@@ -51,7 +54,9 @@ ndev->ns;
 nf-> days_to_first_fix;
 ndev->days_to_first_fix;
 exp->days_to_first_fix;
-
+entropy->ns;
+entropy->nf;
+nuc->entropy;
 }
 
 """
