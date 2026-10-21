@@ -13,6 +13,11 @@ The steps followed are:
 7. Meta-analyses with forest plots are used to summarise causal effects across different projects, enabling us to identify
 global patterns.
 
+The following are the details of the notebooks used:
+01_sample_construction	Row counts, censoring horizons, Appendix A descriptive statistics.
+02_dag_falsification	The 27-edge graph, falsification on all 13 projects (1,000 permutations × 3 seeds), plus a confirmation with DoWhy’s own falsify_graph.
+03_estimation_refutation	Back-door checks, estimates, three DoWhy refuters, Cinelli–Hazlett sensitivity.
+04_meta_analysis_forest	forest plots.
 
 We have used the following version:
 ### Python Version
